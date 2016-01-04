@@ -40,25 +40,24 @@ None
 
 ## Example Variables
 
-	# Use the 'official' glusterfs packages instead of the 'outdated' distro packages
-	glusterfs_use_glusterfs_repo: True
+    # Use the 'official' glusterfs packages instead of the 'outdated' distro packages
+    glusterfs_use_glusterfs_repo: True
 
-	# When using the 'official' packages, which version to install.
-	#
-  # Example: LATEST, '3.7/3.7.6' or 3.7 (for Ubuntu)
-  #
-	# RedHat: http://download.gluster.org/pub/gluster/glusterfs/{{ glusterfs_repo_version }}/EPEL.repo/epel-$releasever/$basearch/
-	# Debian: http://download.gluster.org/pub/gluster/glusterfs/{{ glusterfs_repo_version }}/Debian/{{ ansible_distribution_release }}/apt/
-	# Ubuntu: ppa:gluster/glusterfs-{{ glusterfs_repo_version }}
-	#
-	glusterfs_repo_version: "{% if ansible_distribution == 'Ubuntu' %}3.7{% else %}LATEST{% endif %}"
+    # When using the 'official' packages, which version to install.
+    #
+    # Example: LATEST, '3.7/3.7.6' or 3.7 (for Ubuntu)
+    #
+    # RedHat: http://download.gluster.org/pub/gluster/glusterfs/{{ glusterfs_repo_version }}/EPEL.repo/epel-$releasever/$basearch/
+    # Debian: http://download.gluster.org/pub/gluster/glusterfs/{{ glusterfs_repo_version }}/Debian/{{ ansible_distribution_release }}/apt/
+    # Ubuntu: ppa:gluster/glusterfs-{{ glusterfs_repo_version }}
+    #
+    glusterfs_repo_version: "{% if ansible_distribution == 'Ubuntu' %}3.7{% else %}LATEST{% endif %}"
 
-	# By default, don't install the server package
-	glusterfs_install_server: False
+    # By default, don't install the server package
+    glusterfs_install_server: False
 
-	# By default, install the client package
-	glusterfs_install_client: True
-
+    # By default, install the client package
+    glusterfs_install_client: True
 
 Have a look at the playbook example or the source for the dict syntax. Mostly all [glustermodule parameters](http://docs.ansible.com/ansible/gluster_volume_module.html) are supported.
 
