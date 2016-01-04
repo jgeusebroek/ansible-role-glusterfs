@@ -71,4 +71,4 @@ MIT / BSD
 
 ## Author Information
 
-This role was created in 2015 by [Jeroen Geusebroek](http://jeroengeusebroek.nl/).
+This role was created in 2016 by [Jeroen Geusebroek](http://jeroengeusebroek.nl/).
