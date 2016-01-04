@@ -1,0 +1,4 @@
+---
+glusterfs_daemon: glusterfs-server
+glusterfs_server_package: glusterfs-server
+glusterfs_client_package: glusterfs-client

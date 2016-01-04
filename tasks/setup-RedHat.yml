@@ -1,0 +1,25 @@
+---
+- name: Enable GlusterFS yum repository | RedHat
+  template:
+    src: glusterfs-epel.repo.j2
+    dest: /etc/yum.repos.d/glusterfs-epel.repo
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Import GlusterFS GPG key | Redhat
+  rpm_key:
+    key: "https://download.gluster.org/pub/gluster/glusterfs/LATEST/EPEL.repo/pub.key"
+    state: present
+
+- name: Ensure GlusterFS client is installed | Redhat
+  yum:
+    name: '{{ glusterfs_client_package }}'
+    state: installed
+  when: 'glusterfs_install_client == True'
+
+- name: Ensure GlusterFS server is installed | Redhat
+  yum:
+    name: '{{ glusterfs_server_package }}'
+    state: installed
+  when: 'glusterfs_install_server == True'

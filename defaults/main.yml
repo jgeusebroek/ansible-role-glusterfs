@@ -1,0 +1,14 @@
+---
+glusterfs_use_glusterfs_repo: True
+
+# PPA for Ubuntu does not have 'latest', defaulting to the latest (as of this moment) version
+glusterfs_repo_version: "{% if ansible_distribution == 'Ubuntu' %}3.7{% else %}LATEST{% endif %}"
+
+# By default, don't install the server package
+glusterfs_install_server: False
+
+# By default, install the client package
+glusterfs_install_client: True
+
+glusterfs_volumes: {}
+glusterfs_mounts: {}

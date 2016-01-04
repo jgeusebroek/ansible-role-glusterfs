@@ -1,0 +1,31 @@
+---
+- name: Import GlusterFS GPG key | Debian
+  apt_key:
+    url: 'http://download.gluster.org/pub/gluster/glusterfs/{{ glusterfs_repo_version }}/pub.key'
+  when: ansible_distribution == 'Debian' and glusterfs_use_glusterfs_repo == True
+
+- name: Enable GlusterFS apt repository | Debian
+  apt_repository:
+    repo: 'deb http://download.gluster.org/pub/gluster/glusterfs/{{ glusterfs_repo_version }}/Debian/{{ ansible_distribution_release }}/apt/ {{ ansible_distribution_release }} main'
+    state: present
+    update_cache: yes
+  when: ansible_distribution == 'Debian' and glusterfs_use_glusterfs_repo == true
+
+- name: Enable GlusterFS PPA repository | Ubuntu
+  apt_repository:
+    repo: 'ppa:gluster/glusterfs-{{ glusterfs_repo_version }}'
+    state: present
+    update_cache: yes
+  when: ansible_distribution == 'Ubuntu' and glusterfs_use_glusterfs_repo == true
+
+- name: Ensure GlusterFS client is installed | Debian / Ubuntu
+  apt:
+    name: '{{ glusterfs_client_package }}'
+    state: installed
+  when: glusterfs_install_client == True
+
+- name: Ensure GlusterFS server is installed | Debian / Ubuntu
+  apt:
+    name: '{{ glusterfs_server_package }}'
+    state: installed
+  when: glusterfs_install_server == True
