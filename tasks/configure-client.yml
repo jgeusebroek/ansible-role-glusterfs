@@ -11,10 +11,10 @@
 
 - name: Ensure GlusterFS volumes are mounted
   mount:
-    name: '{{ item.mount_dir }}
+    name: '{{ item.mount_dir }}'
     src: '{{ item.volume }}'
     fstype: glusterfs
-    opts: '{{ item.options|default('defaults,_netdev') }}
+    opts: '{{ item.options|default("defaults,_netdev") }}'
     state: mounted
   with_items:
     - '{{ glusterfs_mounts }}'

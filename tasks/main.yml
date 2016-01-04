@@ -9,6 +9,7 @@
   when: ansible_os_family == 'Debian'
 
 - include: configure-server.yml
-  when: glusterfs_install_server == True
+  when: glusterfs_volumes
 
 - include: configure-client.yml
+  when: glusterfs_mounts

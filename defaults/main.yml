@@ -10,5 +10,5 @@ glusterfs_install_server: False
 # By default, install the client package
 glusterfs_install_client: True
 
-glusterfs_volumes: {}
-glusterfs_mounts: {}
+glusterfs_volumes: []
+glusterfs_mounts: []
