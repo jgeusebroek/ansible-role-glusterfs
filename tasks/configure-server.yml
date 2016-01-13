@@ -19,18 +19,18 @@
 - name: Create GlusterFS volumes
   gluster_volume:
     name: "{{ item.name }}"
-    cluster: "{{ item.cluster|default() }}"
-    host: "{{ item.host|default(None) }}"
+    cluster: "{{ item.cluster|default(omit) }}"
+    host: "{{ item.host|default(omit) }}"
     force: "{{ item.force }}"
     transport: "{{ item.transport|default('tcp') }}"
     state: "{{ item.state|default('present') }}"
-    quota: "{{ item.quota|default(None) }}"
+    quota: "{{ item.quota|default(omit) }}"
     start_on_create: "{{ item.start_on_create|default('yes') }}"
     rebalance: "{{ item.rebalance|default('no') }}"
-    replicas: "{{ item.replicas|default(0) }}"
-    stripes: "{{ item.stripes|default(0) }}"
-    options: "{{ item.options|default({}) }}"
+    replicas: "{{ item.replicas|default(omit) }}"
+    stripes: "{{ item.stripes|default(omit) }}"
+    options: "{{ item.options|default(omit) }}"
     brick: '{{ item.bricks | join(",") }}'
-    directory: "{{ item.directory|default(False) }}"
+    directory: "{{ item.directory|default(omit) }}"
   with_items: glusterfs_volumes
   run_once: true
