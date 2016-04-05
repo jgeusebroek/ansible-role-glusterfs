@@ -13,7 +13,7 @@
     # owner: '{{ item.0.owner|default(None) }}'
     # group: '{{ item.0.group|default(None) }}'
   with_subelements:
-    - glusterfs_volumes
+    - '{{ glusterfs_volumes }}'
     - bricks
 
 - name: Create GlusterFS volumes
@@ -32,5 +32,5 @@
     options: "{{ item.options|default(omit) }}"
     brick: '{{ item.bricks | join(",") }}'
     directory: "{{ item.directory|default(omit) }}"
-  with_items: glusterfs_volumes
+  with_items: '{{ glusterfs_volumes }}'
   run_once: true
