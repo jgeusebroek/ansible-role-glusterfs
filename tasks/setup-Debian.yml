@@ -1,7 +1,7 @@
 ---
 - name: Import GlusterFS GPG key | Debian
   apt_key:
-    url: 'http://download.gluster.org/pub/gluster/glusterfs/{{ glusterfs_repo_version }}/pub.key'
+    url: 'http://download.gluster.org/pub/gluster/glusterfs/{{ glusterfs_repo_version }}/rsa.pub'
   when: ansible_distribution == 'Debian' and glusterfs_use_glusterfs_repo == True
 
 - name: Enable GlusterFS apt repository | Debian
